@@ -51,7 +51,7 @@ const BacterialCharacteristicsForm = () => {
       console.error('Error submitting form:', error);
     }
   };
-
+ 
 
   const handleCheckboxChange = (characteristic) => {
     setCharacteristics((prevCharacteristics) => ({
