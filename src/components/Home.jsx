@@ -1,4 +1,4 @@
-// src/components/BacterialCharacteristicsForm.js
+
 import React, { useState } from 'react';
 import axios from "axios";
 import { Hourglass } from 'react-loader-spinner';
@@ -12,7 +12,7 @@ const BacterialCharacteristicsForm = () => {
     nonLactoseFermenting: false,
     colistinResistant: false,
   };
-  const [isLoading, setIsLoading] = useState(false); // Initially set to false
+  const [isLoading, setIsLoading] = useState(false); 
   const [characteristics, setCharacteristics] = useState(initialCharacteristicsState);
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -21,14 +21,14 @@ const BacterialCharacteristicsForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setIsLoading(true); // Set loading to true when the request starts
+    setIsLoading(true); 
 
     const formData = new FormData();
     if (image) {
       formData.append('image', image);
     }
 
-    // Do not stringify characteristics, append them directly
+    
     formData.append('gramNegativeBacilli', characteristics.gramNegativeBacilli);
     formData.append('oxidasePositive', characteristics.oxidasePositive);
     formData.append('catalasePositive', characteristics.catalasePositive);
@@ -44,15 +44,15 @@ const BacterialCharacteristicsForm = () => {
 
       console.log(response.data);
 
-      // Check the server response and update state accordingly
+      
       setSubmissionMessage(response.data.message);
 
-      setCharacteristics(initialCharacteristicsState); // Clear form state
+      setCharacteristics(initialCharacteristicsState); 
       setImage(null);
     } catch (error) {
       console.error('Error submitting form:', error);
     } finally {
-      setIsLoading(false); // Set loading to false after the request completes (success or error)
+      setIsLoading(false); 
     }
   };
 
@@ -64,15 +64,15 @@ const BacterialCharacteristicsForm = () => {
   };
 
   const handleRefresh = () => {
-    // Add logic to handle refreshing the page or resetting the form
-    window.location.reload(); // This will refresh the page
+    
+    window.location.reload(); 
   };
 
 
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
     setImage(selectedImage);
-    // Create a preview URL for the selected image
+    
     setImagePreview(URL.createObjectURL(selectedImage));
     setSubmissionMessage("");
   };
